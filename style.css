@@ -1,0 +1,642 @@
+    @import url('https://fonts.googleapis.com/css2?family=Hedvig+Letters+Sans&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;1,500&display=swap');
+
+    @media only screen and (max-width: 768px) {
+        body {
+            font-size: 14px;
+        }
+
+        .nav-bar {
+            padding: 0 15px;
+        }
+
+        .nav-links li {
+            margin: 0 3px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    @media only screen and (max-width: 480px) {
+        body {
+            font-size: 12px;
+        }
+
+        .nav-bar {
+            padding: 0 10px;
+        }
+    }
+
+    * {
+        font-family: 'Nunito', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --body-color: #d6d6d6;
+        --nav-color: rgb(223, 80, 23);
+        --side-nav: black;
+        --search-bar: white;
+        --search-text: black;
+        --text-color: white;
+    }
+
+    body {
+        padding-top: 70px; /* Matches nav height */
+        padding-bottom: 3rem; /* Matches footer height */
+        min-height: 100vh;
+        background-color: var(--body-color);
+    }
+
+    body.dark {
+        --body-color: rgb(47, 47, 47);
+        --nav-color: rgb(223, 80, 23);
+        --side-nav: black;
+        --search-bar: white;
+        --search-text: black;
+        --text-color: white;
+        color: white;
+        --product-text-color: black; /* Add this */
+       
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        z-index: 1100; /* Highest z-index */
+        background-color: var(--nav-color);
+    }
+
+    .under-nav-text {
+        margin-top: 0;
+        padding-top: 20px;
+    }
+    
+
+    .nav-bar .logo a {
+        font-size: 25px;
+        font-weight: 500;
+        text-decoration: none;
+        color: var(--text-color);
+    }
+
+    nav .nav-bar {
+        position: relative;
+        height: 70px;
+        margin: 0 auto;
+        padding: 0 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav-links li {
+        margin: 0 5px;
+        position: relative;
+        display: inline-block;
+    }
+
+    .nav-links li a {
+        position: relative;
+        font-size: 18px;
+        text-decoration: none;
+        font-weight: 500;
+        color: var(--text-color);
+        padding: 10px;
+    }
+
+    .nav-links li a::before {
+        content: '';
+        position: absolute;
+        height: 6px;
+        width: 6px;
+        border-radius: 50%;
+        background-color: var(--text-color);
+        left: 50%;
+        bottom: 0;
+        transform: translate(-50%);
+        opacity: 0%;
+        transition: all 0.3s ease;
+    }
+
+    .nav-links li:hover a::before {
+        opacity: 1;
+    }
+
+    .nav-bar .darkLight-searchBox {
+        display: flex;
+        align-items: center;
+    }
+
+    .darkLight-searchBox .dark-light {
+        display: flex;
+        height: 40px;
+        width: 40px;
+        align-items: center;
+        justify-content: center;
+        margin: 0 5px;
+    }
+
+    .dark-light i {
+        position: absolute;
+        cursor: pointer;
+        transform: all 0.3s ease;
+    }
+
+    .dark-light i.sun {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .dark-light.active i.sun {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .dark-light.active i.moon {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    nav a.active {
+        color: #000000;
+        font-weight: bold;
+    }
+
+    .wrapper {
+        max-width: 960px;
+        width: 95%;
+        margin: 0 auto;
+        padding: 20px 5px;
+        position: relative;
+        z-index: 1;
+        margin-bottom: 20px;
+    }
+
+    header {
+        padding: 0 15px;
+        text-align: center;
+    }
+
+    .columns {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        margin: 5px 0;
+    }
+
+    .column {
+        flex: 1;
+        margin: 2px;
+        padding: 10px;
+        transition: 0.3s;
+        border-radius: 25px;
+        text-align: center;
+        border: 2px solid rgb(223, 80, 23);
+    }
+
+    .column:first-child {
+        margin-left: 0;
+    }
+
+    .column:last-child {
+        margin-left: 0;
+    }
+
+    h2 {
+        padding: 10px;
+        margin: 0px;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    p {
+        padding: 0px;
+        margin-top: 0px;
+    }
+
+    #footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 3rem;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        line-height: 3rem;
+        z-index: 1000; /* Below nav but above content */
+    }
+    .fb-page-wrapper {
+        position: fixed;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1000;
+        transition: all 0.3s ease;
+        width: 280px; /* Default width */
+        max-width: 90vw; /* Responsive constraint */
+        overflow: visible; /* Ensures button stays visible */
+    }
+
+    .fb-page-wrapper.hidden {
+        right: -280px; /* Hide the main content */
+    }
+
+    .toggle-btn {
+        position: absolute;
+        left: -40px; /* Slightly reduced to stay on screen */
+        top: 10%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        background-color: rgb(223, 80, 23);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        cursor: pointer;
+        border-radius: 8px 0 0 8px;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        touch-action: manipulation;
+        user-select: none;
+    }
+
+    /* Facebook iframe container */
+    .fb-page {
+        width: 100% !important;
+        height: 500px !important;
+        overflow: hidden;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        border-radius: 8px 0 0 8px;
+    }
+
+    .fb-page iframe {
+        max-width: 100%;
+        touch-action: manipulation;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .fb-page-wrapper {
+            width: 260px;
+        }
+        .fb-page-wrapper.hidden {
+            right: -260px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .fb-page-wrapper {
+            width: 350px;
+        }
+        .fb-page-wrapper.hidden {
+            right: -350px;
+        }
+        .toggle-btn {
+            left: -35px;
+            width: 35px;
+            height: 35px;
+            font-size: 18px;
+        }
+        .fb-page {
+            height: 400px !important;
+        }
+    }
+
+
+    .login-container {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+    
+    
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 1000;
+    }
+    
+    .modal-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      text-align: center;
+      max-width: 300px;
+      width: 100%;
+    }
+    
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    
+    .login-form input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+    
+    .login-form button {
+      padding: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      width: 100%;
+    }
+    
+    .register-button {
+      display: block;
+      margin-top: 10px;
+      text-decoration: none;
+      color: #333;
+    }
+    
+    .notification {
+      color: red;
+      margin-top: 10px;
+    }
+
+    .login-button {
+      position: relative;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text-color);
+      background-color: transparent;
+      text-decoration: none;
+      padding: 10px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    
+    .login-button::before {
+      content: '';
+      position: absolute;
+      height: 6px;
+      width: 6px;
+      border-radius: 50%;
+      background-color: var(--text-color);
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .login-button:hover::before {
+      opacity: 1;
+    }
+    
+    .registration-form-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: calc(100vh - 70px - 3rem); /* Account for nav & footer */
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 12px;
+        max-width: 400px;
+        margin: 0 auto;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        color: #000;
+        overflow-y: auto;
+      }
+      
+      
+      .registration-form-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+      }
+      
+      .registration-form-container form {
+        width: 100%;
+      }
+      
+      .registration-form-container input[type="text"],
+      .registration-form-container input[type="email"],
+      .registration-form-container input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 16px;
+      }
+      
+      .registration-form-container button[type="submit"] {
+        width: 100%;
+        padding: 12px;
+        font-size: 18px;
+        cursor: pointer;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 20px;
+        transition: background-color 0.3s ease;
+        position: relative;
+      }
+      
+      .registration-form-container button[type="submit"]::before {
+
+        position: absolute;
+        height: 6px;
+        width: 6px;
+        border-radius: 50%;
+        background-color: white;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+      
+      .registration-form-container button[type="submit"]:hover::before {
+        opacity: 1;
+      }
+      
+
+
+     .product-catalog {
+            padding: 20px;
+        }
+
+ .product-grid {
+    display: grid;                        /* Use grid layout */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));  /* Create responsive columns */
+    gap: 20px;                             /* Add spacing between items */
+}
+
+.product-item {
+    border: 1px solid #ddd;
+    position: relative;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--product-bg-color, white);
+    color: var(--product-text-color);
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;  /* Ensures all items are the same height */
+    justify-content: space-between; /* Ensures that content inside the item is spaced evenly */
+}
+
+        .product-item:hover {
+            transform: scale(1.05);
+        }
+
+/* Make sure all product images have the same size */
+.product-item img {
+    width: 100%;  /* Makes sure the image takes up the full width of its container */
+    height: 200px; /* Fix height to ensure uniform size */
+    object-fit: cover; /* Ensures the image covers the box while maintaining aspect ratio */
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+        .product-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+
+}
+
+        .product-item p {
+    
+    margin-bottom: 20px;
+}
+
+        .price-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+        .price {
+            color: #fff;
+            background-color: #e44d26;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            transition: background-color 0.3s;
+        }
+
+        .price:hover {
+            background-color: #333;
+        }
+
+        .product-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .add-to-cart-btn{
+            background-color: #04AA6D;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+
+
+        }
+
+
+.fa-cart-plus{
+  background:rgb(223, 80, 23);
+}
+
+.addtocart {
+  display: block;
+  width: 100%; 
+  height: 4rem; 
+  padding: 0.5em 1em;
+  font-size: 1.2em;
+  border-radius: 100px;
+  border: none;
+  position: relative;
+  background: rgb(223, 80, 23);
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.1s;
+  z-index: 1;
+  box-sizing: border-box; 
+}
+
+.addtocart:hover{
+  transform:scale(1.1);
+}
+.pretext{
+  color:#fff;
+  background:rgb(223, 80, 23);
+  position:absolute;
+  top:0;
+  left:0;
+  height:100%;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+i{
+  margin-right:10px;
+}
+.done{
+  background:rgb(223, 80, 23);
+  position:absolute;
+  width:100%;
+  top:0;
+  left:0;
+  transition:transform 0.3s ease;
+
+  transform:translate(-110%) skew(-40deg);
+}
